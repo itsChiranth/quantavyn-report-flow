@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import heroImg from "@/assets/hero.jpg";
 import featSources from "@/assets/feat-sources.jpg";
+import featChat from "@/assets/feat-chat.jpg";
 import featTemplate from "@/assets/feat-template.jpg";
 import { ArrowRight, Check, Zap, Layers, Target, Brain } from "lucide-react";
 
@@ -127,55 +129,42 @@ function Hero() {
 
 function HeroVisual() {
   return (
-    <div className="relative mx-auto mt-20 max-w-4xl">
-      <div className="absolute -inset-8 -z-10 rounded-[44px] bg-gradient-to-br from-emerald-200/30 via-sky-200/30 to-violet-300/30 blur-3xl" />
-      <div className="grain-overlay relative overflow-hidden rounded-3xl border border-border bg-foreground shadow-card">
-        <div className="flex items-center justify-between border-b border-white/10 px-5 py-3">
-          <div className="flex gap-1.5">
-            <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
-            <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
-            <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
+    <div className="relative mx-auto mt-20 max-w-5xl">
+      <div className="absolute -inset-8 -z-10 rounded-[44px] bg-gradient-to-br from-emerald-200/40 via-sky-200/40 to-violet-300/40 blur-3xl" />
+      <div className="grain-overlay relative overflow-hidden rounded-3xl border border-border shadow-card">
+        <img
+          src={heroImg}
+          alt="ReportFlow — generate reports in minutes"
+          width={1280}
+          height={720}
+          className="h-auto w-full object-cover"
+          loading="eager"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-foreground/35 via-transparent to-transparent" />
+        <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4">
+          <div className="rounded-2xl border border-white/15 bg-black/55 px-5 py-3.5 backdrop-blur-md">
+            <div className="text-[10px] uppercase tracking-widest text-white/50">Report ready</div>
+            <div className="mt-0.5 text-sm font-medium text-white">Engineering Internship Report · IEEE Format</div>
           </div>
-          <div className="text-[11px] text-white/40">quantavyn.com · ReportFlow — Report Generator</div>
-          <div className="w-12" />
+          <div className="hidden sm:flex items-center gap-2 rounded-full border border-white/15 bg-black/55 px-4 py-2 backdrop-blur-md">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
+            </span>
+            <span className="text-xs text-white/80">Processing complete</span>
+          </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5">
-          <div className="bg-[#0f1115] p-6 text-left col-span-1">
-            <div className="mb-3 text-[10px] uppercase tracking-widest text-white/40">Quantavyn</div>
-            <div className="space-y-1.5">
-              {["Home", "Products", "About", "Contact"].map((i) => (
-                <div key={i} className={`rounded-md px-3 py-2 text-xs ${i === "Products" ? "bg-white/10 text-white/90" : "text-white/50"}`}>{i}</div>
-              ))}
-            </div>
-            <div className="mt-6 pt-6 border-t border-white/10">
-              <div className="text-[10px] uppercase tracking-widest text-white/40 mb-3">Our Products</div>
-              <div className="flex items-center gap-2 rounded-md bg-accent/20 px-3 py-2">
-                <div className="h-5 w-5 rounded bg-accent/40 grid place-items-center">
-                  <div className="h-2.5 w-2.5 rounded-sm bg-accent" />
-                </div>
-                <span className="text-xs text-white/80">ReportFlow</span>
-              </div>
-            </div>
-          </div>
-          <div className="bg-[#0b0d11] p-6 text-left col-span-2">
-            <div className="text-[10px] uppercase tracking-widest text-white/40 mb-4">ReportFlow — Flagship Product</div>
-            <div className="rounded-xl bg-white/[0.04] p-5">
-              <div className="text-base font-medium text-white/90 mb-2">Generate Academic Reports in Minutes</div>
-              <div className="space-y-1.5 mb-4">
-                {[100, 90, 80].map((w, i) => (
-                  <div key={i} className="h-1.5 rounded-full bg-white/10" style={{ width: `${w}%` }} />
-                ))}
-              </div>
-              <div className="grid grid-cols-3 gap-2 mt-4">
-                {["Sources", "Synthesis", "Export"].map((label) => (
-                  <div key={label} className="rounded-lg bg-white/[0.05] p-2.5 text-center">
-                    <div className="text-[10px] text-white/40 uppercase tracking-wider">{label}</div>
-                    <div className="mt-1 text-xs font-medium text-white/70">✓ Ready</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+      </div>
+      <div className="absolute -left-4 top-1/3 hidden xl:block">
+        <div className="rounded-2xl border border-border bg-background shadow-card px-4 py-3">
+          <div className="text-2xl font-medium tracking-tight">3.5h</div>
+          <div className="text-xs text-muted-foreground mt-0.5">saved per report</div>
+        </div>
+      </div>
+      <div className="absolute -right-4 top-1/4 hidden xl:block">
+        <div className="rounded-2xl border border-border bg-background shadow-card px-4 py-3">
+          <div className="text-2xl font-medium tracking-tight">99%</div>
+          <div className="text-xs text-muted-foreground mt-0.5">template accuracy</div>
         </div>
       </div>
     </div>
@@ -185,7 +174,7 @@ function HeroVisual() {
 /* ───────────────────────── TRUST STRIP ───────────────────────── */
 
 function TrustStrip() {
-  const items = ["Stanford", "MIT", "Oxford", "ETH Zürich", "NUS", "Berkeley", "Imperial", "TU Delft"];
+  const items = ["SRM", "VIT", "BITS Pilani", "Manipal", "Amity", "Christ University", "Symbiosis", "LPU"];
   const list = [...items, ...items];
   return (
     <section className="border-y border-border bg-surface/60">
@@ -371,6 +360,23 @@ function Mission() {
             </div>
             <h3 className="text-[17px] font-medium">{p.title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.body}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Visual proof strip */}
+      <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-3">
+        {[
+          { img: featSources, label: "Upload sources", sub: "PDF, DOCX, slides, links" },
+          { img: featChat, label: "Synthesis", sub: "Multi-pass cross-referencing" },
+          { img: featTemplate, label: "Submission-ready", sub: "Your template, applied perfectly" },
+        ].map((item) => (
+          <div key={item.label} className="grain-overlay overflow-hidden rounded-2xl border border-border shadow-card">
+            <img src={item.img} alt={item.label} className="h-44 w-full object-cover object-top" loading="lazy" />
+            <div className="px-4 py-3">
+              <div className="text-sm font-medium">{item.label}</div>
+              <div className="text-xs text-muted-foreground mt-0.5">{item.sub}</div>
+            </div>
           </div>
         ))}
       </div>

@@ -1,9 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import featSources from "@/assets/feat-sources.jpg";
 import featChat from "@/assets/feat-chat.jpg";
 import featTemplate from "@/assets/feat-template.jpg";
 import heroImg from "@/assets/hero.jpg";
-import { ArrowRight, Check, FileText, Quote, Sparkles, Star } from "lucide-react";
+import { ArrowRight, Check, FileText, Globe, Quote, Sparkles, Star } from "lucide-react";
 
 export const Route = createFileRoute("/reportflow")({
   head: () => ({
@@ -342,46 +343,154 @@ function Testimonials() {
 
 /* ───────────────────────── PRICING ───────────────────────── */
 
+const PLANS = {
+  india: {
+    symbol: "₹",
+    note: "Prices in Indian Rupees · GST as applicable",
+    payPerDoc: { price: "₹99", label: "per document" },
+    plans: [
+      {
+        name: "Free",
+        price: "Free",
+        per: "",
+        desc: "Try ReportFlow with zero risk.",
+        feats: [
+          "1 document trial",
+          "Full synthesis included",
+          "APA / MLA / IEEE templates",
+          "DOCX + PDF export",
+        ],
+        cta: "Start free",
+        highlight: false,
+      },
+      {
+        name: "Student Pack",
+        price: "₹399",
+        per: "/month",
+        desc: "5 reports/month — ₹79 per doc. Best value.",
+        feats: [
+          "5 documents/month",
+          "₹79/doc (save 20% vs pay-per-use)",
+          "Custom course templates",
+          "Priority processing",
+          "Citation export",
+        ],
+        cta: "Get Student Pack",
+        highlight: true,
+      },
+      {
+        name: "Pro",
+        price: "₹999",
+        per: "/month",
+        desc: "Unlimited reports for power users.",
+        feats: [
+          "Unlimited documents",
+          "All templates included",
+          "Fastest processing queue",
+          "Admin dashboard",
+          "Early access to new features",
+        ],
+        cta: "Get Pro",
+        highlight: false,
+      },
+    ],
+  },
+  global: {
+    symbol: "$",
+    note: "Prices in USD · Billed monthly · Cancel any time",
+    payPerDoc: { price: "$1.99", label: "per document" },
+    plans: [
+      {
+        name: "Free",
+        price: "Free",
+        per: "",
+        desc: "Try ReportFlow with zero risk.",
+        feats: [
+          "1 document trial",
+          "Full synthesis included",
+          "APA / MLA / IEEE templates",
+          "DOCX + PDF export",
+        ],
+        cta: "Start free",
+        highlight: false,
+      },
+      {
+        name: "Student Pack",
+        price: "$7.99",
+        per: "/month",
+        desc: "5 reports/month — $1.60/doc. Best value.",
+        feats: [
+          "5 documents/month",
+          "$1.60/doc (save 20% vs pay-per-use)",
+          "Custom course templates",
+          "Priority processing",
+          "Citation export",
+        ],
+        cta: "Get Student Pack",
+        highlight: true,
+      },
+      {
+        name: "Pro",
+        price: "$19.99",
+        per: "/month",
+        desc: "Unlimited reports for power users.",
+        feats: [
+          "Unlimited documents",
+          "All templates included",
+          "Fastest processing queue",
+          "Admin dashboard",
+          "Early access to new features",
+        ],
+        cta: "Get Pro",
+        highlight: false,
+      },
+    ],
+  },
+} as const;
+
 function Pricing() {
-  const plans = [
-    {
-      name: "Free",
-      price: "$0",
-      desc: "Try your first report on us.",
-      feats: ["1 report total", "Full synthesis included", "Standard templates"],
-      cta: "Start free",
-      highlight: false,
-    },
-    {
-      name: "Student",
-      price: "$12",
-      per: "/month",
-      desc: "For the weekly grind.",
-      feats: ["20 reports / month", "Custom templates", "Citation export", "Priority queue"],
-      cta: "Get Student",
-      highlight: true,
-    },
-    {
-      name: "Cohort",
-      price: "$8",
-      per: "/seat / mo",
-      desc: "For study groups & TAs.",
-      feats: ["Unlimited reports", "Shared templates", "Admin dashboard", "SSO"],
-      cta: "Contact sales",
-      highlight: false,
-    },
-  ];
+  const [region, setRegion] = useState<"india" | "global">("india");
+  const active = PLANS[region];
+
   return (
     <section id="pricing" className="mx-auto max-w-7xl px-6 py-24">
-      <div className="mx-auto mb-14 max-w-2xl text-center">
+      <div className="mx-auto mb-10 max-w-2xl text-center">
         <div className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">Pricing</div>
         <h2 className="mt-3 text-4xl font-medium tracking-[-0.025em] sm:text-5xl">
           Simple plans. <span className="font-serif italic">No surprises.</span>
         </h2>
-        <p className="mt-4 text-muted-foreground">Usage-based. Cancel any time.</p>
+        <p className="mt-4 text-muted-foreground">Pay per document or subscribe for the best per-doc rate.</p>
+
+        {/* Region toggle */}
+        <div className="mt-7 inline-flex items-center gap-1 rounded-full border border-border bg-surface p-1">
+          <button
+            onClick={() => setRegion("india")}
+            className={`inline-flex h-8 items-center gap-1.5 rounded-full px-4 text-xs font-medium transition ${
+              region === "india" ? "bg-foreground text-background shadow-sm" : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            🇮🇳 India (₹)
+          </button>
+          <button
+            onClick={() => setRegion("global")}
+            className={`inline-flex h-8 items-center gap-1.5 rounded-full px-4 text-xs font-medium transition ${
+              region === "global" ? "bg-foreground text-background shadow-sm" : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            <Globe className="h-3 w-3" /> International ($)
+          </button>
+        </div>
       </div>
+
+      {/* Pay-per-use callout */}
+      <div className="mx-auto mb-7 max-w-3xl rounded-2xl border border-border bg-surface/60 px-6 py-4 text-center text-sm">
+        <span className="text-muted-foreground">No subscription needed? Pay </span>
+        <span className="font-semibold text-foreground">{active.payPerDoc.price}</span>
+        <span className="text-muted-foreground"> {active.payPerDoc.label} — no commitment, no monthly fee.</span>
+      </div>
+
       <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-        {plans.map((p) => (
+        {active.plans.map((p) => (
           <div
             key={p.name}
             className={`relative rounded-3xl border p-8 transition ${
@@ -392,7 +501,7 @@ function Pricing() {
           >
             {p.highlight && (
               <div className="absolute -top-3 left-8 inline-flex items-center gap-1 rounded-full bg-background px-3 py-1 text-[11px] font-medium text-foreground">
-                <Sparkles className="h-3 w-3" /> Most popular
+                <Sparkles className="h-3 w-3" /> Best value
               </div>
             )}
             <h3 className="text-xl font-medium">{p.name}</h3>
@@ -403,8 +512,8 @@ function Pricing() {
             </div>
             <ul className="mt-7 space-y-3 text-sm">
               {p.feats.map((f) => (
-                <li key={f} className="flex items-center gap-2.5">
-                  <Check className={`h-4 w-4 ${p.highlight ? "text-white/60" : "text-foreground/50"}`} strokeWidth={2.5} />
+                <li key={f} className="flex items-start gap-2.5">
+                  <Check className={`mt-0.5 h-4 w-4 shrink-0 ${p.highlight ? "text-white/60" : "text-foreground/50"}`} strokeWidth={2.5} />
                   {f}
                 </li>
               ))}
@@ -421,6 +530,8 @@ function Pricing() {
           </div>
         ))}
       </div>
+
+      <p className="mt-6 text-center text-xs text-muted-foreground">{active.note}</p>
     </section>
   );
 }
