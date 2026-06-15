@@ -200,7 +200,7 @@ function HeroImage() {
 /* ───────────────────────── LOGOS STRIP ───────────────────────── */
 
 function LogosStrip() {
-  const items = ["Stanford", "MIT", "Oxford", "ETH Zürich", "NUS", "Berkeley", "Imperial", "TU Delft"];
+  const items = ["SRM", "VIT", "IIT Delhi", "IIT Bombay", "BITS Pilani", "Anna University", "NIT Trichy", "Manipal"];
   const list = [...items, ...items];
   return (
     <section className="border-y border-border bg-surface/60 mt-16">
