@@ -1,0 +1,137 @@
+@import "tailwindcss" source("../src");
+@import "tw-animate-css";
+
+@layer base {
+  @font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("https://fonts.gstatic.com/s/inter/v19/UcCo3FwrK3iLTcvneQg7Ca725JhhKnNqk4j1ebLhAm8SrXTc2dRZkA.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "Instrument Serif";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("https://fonts.gstatic.com/s/instrumentserif/v4/jizDREVItHgc8qDIbSTKq4XKVjnB.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "Instrument Serif";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url("https://fonts.gstatic.com/s/instrumentserif/v4/jizBREVItHgc8qDIbSTKq4XKVjLrG7Ay.woff2") format("woff2");
+  }
+}
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+
+  --radius-3xl: 28px;
+  --radius-4xl: 36px;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-card: var(--surface);
+  --color-card-foreground: var(--foreground);
+  --color-popover: var(--surface);
+  --color-popover-foreground: var(--foreground);
+  --color-secondary: var(--muted);
+  --color-secondary-foreground: var(--foreground);
+  --color-destructive: oklch(0.6 0.22 25);
+  --color-destructive-foreground: #fff;
+}
+
+:root {
+  --background: oklch(0.985 0.003 80);
+  --foreground: oklch(0.14 0.005 260);
+  --surface: oklch(0.97 0.004 80);
+  --muted: oklch(0.955 0.004 80);
+  --muted-foreground: oklch(0.45 0.01 260);
+  --border: oklch(0.9 0.006 80);
+  --input: oklch(0.93 0.006 80);
+  --ring: oklch(0.14 0.005 260);
+  --primary: oklch(0.14 0.005 260);
+  --primary-foreground: oklch(0.99 0.003 80);
+  --accent: oklch(0.72 0.18 145);
+  --accent-foreground: oklch(0.14 0.005 260);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.011em;
+  }
+  ::selection { background: oklch(0.78 0.18 142 / 0.3); }
+}
+
+@utility text-gradient-brand {
+  background-image: linear-gradient(
+    92deg,
+    oklch(0.74 0.18 142) 0%,
+    oklch(0.76 0.16 175) 35%,
+    oklch(0.7 0.18 235) 65%,
+    oklch(0.62 0.22 290) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@utility shadow-soft {
+  box-shadow:
+    0 1px 2px oklch(0 0 0 / 0.04),
+    0 8px 24px oklch(0 0 0 / 0.06);
+}
+
+@utility shadow-card {
+  box-shadow:
+    0 1px 0 oklch(0 0 0 / 0.04),
+    0 30px 60px -30px oklch(0 0 0 / 0.28);
+}
+
+@utility grain-overlay {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    opacity: 0.06;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@utility animate-float { animation: float-y 6s ease-in-out infinite; }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@utility animate-marquee { animation: marquee 40s linear infinite; }
