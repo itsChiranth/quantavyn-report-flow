@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 960" width="1280" height="960">
+  <defs>
+    <radialGradient id="rdbg" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#ef4444"/>
+      <stop offset="55%" stop-color="#b91c1c"/>
+      <stop offset="100%" stop-color="#450a0a"/>
+    </radialGradient>
+    <radialGradient id="rdspot" cx="38%" cy="38%" r="45%">
+      <stop offset="0%" stop-color="rgba(251,113,133,0.35)"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+    <linearGradient id="devGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1a1f"/>
+      <stop offset="100%" stop-color="#09090d"/>
+    </linearGradient>
+    <linearGradient id="devEdge" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.10)"/>
+      <stop offset="60%" stop-color="rgba(255,255,255,0.02)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0.0)"/>
+    </linearGradient>
+    <linearGradient id="screenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f1015"/>
+      <stop offset="100%" stop-color="#07080c"/>
+    </linearGradient>
+    <filter id="shadow2" x="-40%" y="-40%" width="180%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="32"/>
+      <feOffset dx="8" dy="56"/>
+      <feFlood flood-color="rgba(0,0,0,0.55)"/>
+      <feComposite in2="SourceAlpha" operator="in"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="blur12"><feGaussianBlur stdDeviation="12"/></filter>
+    <clipPath id="screenClip">
+      <rect x="-192" y="-205" width="384" height="410" rx="8" ry="8"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1280" height="960" fill="url(#rdbg)"/>
+  <rect width="1280" height="960" fill="url(#rdspot)"/>
+
+  <!-- Floor shadow -->
+  <ellipse cx="625" cy="860" rx="270" ry="32" fill="rgba(0,0,0,0.38)" filter="url(#blur12)"/>
+
+  <!-- Device: slightly tilted right -->
+  <g transform="translate(635,470) rotate(6)" filter="url(#shadow2)">
+    <!-- Device body -->
+    <rect x="-252" y="-320" width="504" height="534" rx="48" ry="48" fill="url(#devGrad)"/>
+    <!-- Edge highlight -->
+    <rect x="-252" y="-320" width="504" height="534" rx="48" ry="48" fill="url(#devEdge)"/>
+    <!-- Device border -->
+    <rect x="-251" y="-319" width="502" height="532" rx="47" ry="47" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+
+    <!-- Camera dot -->
+    <circle cx="0" cy="-295" r="5" fill="rgba(255,255,255,0.15)"/>
+
+    <!-- Screen area -->
+    <rect x="-192" y="-260" width="384" height="430" rx="8" ry="8" fill="url(#screenGrad)"/>
+
+    <!-- Content inside screen -->
+    <g clip-path="url(#screenClip)" transform="translate(0,55)">
+      <!-- Title -->
+      <text x="-140" y="-200" font-family="Georgia, serif" font-size="22" fill="rgba(255,255,255,0.88)" font-weight="400">Report Draft</text>
+      <!-- Divider -->
+      <line x1="-140" y1="-182" x2="140" y2="-182" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+
+      <!-- Paragraph 1 lines -->
+      <rect x="-140" y="-166" width="268" height="8" rx="4" fill="rgba(255,255,255,0.18)"/>
+      <rect x="-140" y="-152" width="250" height="8" rx="4" fill="rgba(255,255,255,0.14)"/>
+      <rect x="-140" y="-138" width="260" height="8" rx="4" fill="rgba(255,255,255,0.14)"/>
+      <rect x="-140" y="-124" width="200" height="8" rx="4" fill="rgba(255,255,255,0.12)"/>
+
+      <!-- Gap -->
+      <!-- Paragraph 2 lines -->
+      <rect x="-140" y="-102" width="255" height="8" rx="4" fill="rgba(255,255,255,0.15)"/>
+      <rect x="-140" y="-88" width="268" height="8" rx="4" fill="rgba(255,255,255,0.13)"/>
+      <rect x="-140" y="-74" width="230" height="8" rx="4" fill="rgba(255,255,255,0.13)"/>
+      <rect x="-140" y="-60" width="245" height="8" rx="4" fill="rgba(255,255,255,0.11)"/>
+
+      <!-- Section 3 with check -->
+      <line x1="-140" y1="-38" x2="140" y2="-38" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+      <text x="-126" y="-16" font-family="Georgia, serif" font-size="13" fill="rgba(255,255,255,0.55)">✓  Save this report.</text>
+      <rect x="-140" y="-2" width="210" height="7" rx="3.5" fill="rgba(255,255,255,0.1)"/>
+      <rect x="-140" y="12" width="230" height="7" rx="3.5" fill="rgba(255,255,255,0.08)"/>
+    </g>
+  </g>
+</svg>

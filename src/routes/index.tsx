@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import heroImg from "@/assets/hero.jpg";
+import heroImg from "@/assets/hero.svg";
 import featSources from "@/assets/feat-sources.jpg";
-import featChat from "@/assets/feat-chat.jpg";
-import featTemplate from "@/assets/feat-template.jpg";
+import featChat from "@/assets/feat-chat.svg";
+import featTemplate from "@/assets/feat-template.svg";
 import { ArrowRight, Check, Zap, Layers, Target, Brain } from "lucide-react";
 
 export const Route = createFileRoute("/")({

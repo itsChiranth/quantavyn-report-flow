@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import featSources from "@/assets/feat-sources.jpg";
-import featChat from "@/assets/feat-chat.jpg";
-import featTemplate from "@/assets/feat-template.jpg";
-import heroImg from "@/assets/hero.jpg";
+import featChat from "@/assets/feat-chat.svg";
+import featTemplate from "@/assets/feat-template.svg";
+import heroImg from "@/assets/hero.svg";
 import { ArrowRight, Check, FileText, Globe, Quote, Sparkles, Star } from "lucide-react";
 
 export const Route = createFileRoute("/reportflow")({
