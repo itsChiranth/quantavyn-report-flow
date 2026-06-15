@@ -6,13 +6,13 @@ import { ArrowRight, Check, Zap, Layers, Target, Brain } from "lucide-react";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Quantavyn — Building AI-Powered Documentation Software" },
+      { title: "Quantavyn — Intelligent Documentation Software" },
       {
         name: "description",
         content:
-          "Quantavyn develops intelligent software that helps students and professionals create high-quality documentation faster.",
+          "Quantavyn builds software that helps students and professionals create high-quality documentation faster.",
       },
-      { property: "og:title", content: "Quantavyn — AI-Powered Documentation Software" },
+      { property: "og:title", content: "Quantavyn — Intelligent Documentation Software" },
       { property: "og:description", content: "Intelligent software that eliminates hours of manual documentation work." },
     ],
   }),
@@ -91,14 +91,14 @@ function Hero() {
 
         <h1 className="mx-auto max-w-5xl text-[clamp(2.5rem,7vw,5.5rem)] font-medium leading-[0.98] tracking-[-0.045em]">
           Building{" "}
-          <span className="font-serif italic text-gradient-brand">AI-Powered</span>
+          <span className="font-serif italic text-gradient-brand">Intelligent</span>
           <br className="hidden sm:block" />
           Documentation Software
         </h1>
 
         <p className="mx-auto mt-8 max-w-xl text-base text-muted-foreground sm:text-lg">
-          Quantavyn develops intelligent software that helps students and professionals create
-          high-quality documentation faster.
+          Quantavyn builds software that helps students and professionals create
+          high-quality documentation faster — without the repetitive manual work.
         </p>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
@@ -136,7 +136,7 @@ function HeroVisual() {
             <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
             <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
           </div>
-          <div className="text-[11px] text-white/40">quantavyn.com · ReportFlow — AI Report Generator</div>
+          <div className="text-[11px] text-white/40">quantavyn.com · ReportFlow — Report Generator</div>
           <div className="w-12" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5">
@@ -167,7 +167,7 @@ function HeroVisual() {
                 ))}
               </div>
               <div className="grid grid-cols-3 gap-2 mt-4">
-                {["Sources", "AI Synthesis", "Export"].map((label) => (
+                {["Sources", "Synthesis", "Export"].map((label) => (
                   <div key={label} className="rounded-lg bg-white/[0.05] p-2.5 text-center">
                     <div className="text-[10px] text-white/40 uppercase tracking-wider">{label}</div>
                     <div className="mt-1 text-xs font-medium text-white/70">✓ Ready</div>
@@ -233,13 +233,13 @@ function ProductShowcase() {
               <span className="text-white/50">In minutes, not hours.</span>
             </h3>
             <p className="mt-5 text-sm leading-relaxed text-white/65">
-              Drop in your sources — PDFs, slides, web links, lecture notes — and ReportFlow's AI agents synthesize,
+              Drop in your sources — PDFs, slides, web links, lecture notes — and ReportFlow synthesizes,
               structure, and format a complete, fully-cited report ready for submission.
             </p>
             <ul className="mt-7 space-y-3">
               {[
                 "Upload up to 200 sources per report",
-                "Multiple frontier AI models in parallel",
+                "Multi-source synthesis in parallel",
                 "APA, MLA, Chicago, IEEE templates",
                 "Export to DOCX, PDF, and LaTeX",
               ].map((b) => (
@@ -281,13 +281,13 @@ function ProductShowcase() {
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 to-transparent rounded-l-2xl" />
                 <div className="absolute bottom-6 left-6 right-6">
                   <div className="rounded-xl bg-black/40 backdrop-blur-sm border border-white/10 p-4">
-                    <div className="text-[10px] uppercase tracking-widest text-white/50 mb-1">Agent Status</div>
+                    <div className="text-[10px] uppercase tracking-widest text-white/50 mb-1">Processing</div>
                     <div className="flex items-center gap-2">
                       <span className="relative flex h-1.5 w-1.5">
                         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
                         <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
                       </span>
-                      <span className="text-xs text-white/80">Synthesizing sources · 4 models active</span>
+                      <span className="text-xs text-white/80">Synthesizing sources · building draft</span>
                     </div>
                   </div>
                 </div>
@@ -301,7 +301,7 @@ function ProductShowcase() {
       <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
         {[
           { k: "3.5h", v: "Saved per report" },
-          { k: "4+", v: "AI models per draft" },
+          { k: "4+", v: "Synthesis passes" },
           { k: "200", v: "Sources supported" },
           { k: "10k+", v: "Students on waitlist" },
         ].map((s) => (
@@ -331,7 +331,7 @@ function Mission() {
     {
       icon: <Zap className="h-5 w-5" />,
       title: "Reduce repetitive work",
-      body: "Eliminate hours spent on manual formatting, citation gathering, and structural drafting. Let AI handle the scaffolding.",
+      body: "Eliminate hours spent on manual formatting, citation gathering, and structural drafting. Let smart tooling handle the scaffolding.",
     },
     {
       icon: <Layers className="h-5 w-5" />,
@@ -345,8 +345,8 @@ function Mission() {
     },
     {
       icon: <Brain className="h-5 w-5" />,
-      title: "Build practical AI products",
-      body: "We build AI tools that solve real, everyday friction — not novelties. Every Quantavyn product must earn its place in your workflow.",
+      title: "Build practical software",
+      body: "We build tools that solve real, everyday friction — not novelties. Every Quantavyn product must earn its place in your workflow.",
     },
   ];
 
@@ -359,7 +359,7 @@ function Mission() {
           <span className="font-serif italic text-muted-foreground">clear purpose.</span>
         </h2>
         <p className="mt-5 max-w-lg text-muted-foreground">
-          We're not building AI for the sake of it. Every product we ship must measurably reduce real work for real people.
+          We build with purpose. Every product we ship must measurably reduce real work for real people.
         </p>
       </div>
 
@@ -426,7 +426,7 @@ function Footer() {
               <span className="text-lg font-medium tracking-tight">Quantavyn</span>
             </div>
             <p className="mt-4 max-w-xs text-sm text-muted-foreground">
-              Building AI-powered productivity software. Focused. Practical. Built to last.
+              Building intelligent productivity software. Focused. Practical. Built to last.
             </p>
             <div className="mt-5 inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3.5 py-1.5 text-xs text-muted-foreground">
               <ReportFlowIcon />
@@ -446,17 +446,15 @@ function Footer() {
           <div>
             <div className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">Company</div>
             <ul className="mt-4 space-y-2.5 text-sm">
-              {["About", "Blog", "Careers"].map((i) => (
-                <li key={i}><a href="#" className="text-foreground/75 hover:text-foreground transition">{i}</a></li>
-              ))}
+              <li><Link to="/about" className="text-foreground/75 hover:text-foreground transition">About</Link></li>
+              <li><Link to="/contact" className="text-foreground/75 hover:text-foreground transition">Contact</Link></li>
             </ul>
           </div>
           <div>
             <div className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">Legal</div>
             <ul className="mt-4 space-y-2.5 text-sm">
-              {["Privacy Policy", "Terms", "Contact"].map((i) => (
-                <li key={i}><a href="#" className="text-foreground/75 hover:text-foreground transition">{i}</a></li>
-              ))}
+              <li><Link to="/privacy" className="text-foreground/75 hover:text-foreground transition">Privacy Policy</Link></li>
+              <li><Link to="/terms" className="text-foreground/75 hover:text-foreground transition">Terms</Link></li>
             </ul>
           </div>
         </div>

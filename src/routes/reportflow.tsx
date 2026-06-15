@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import featSources from "@/assets/feat-sources.jpg";
 import featChat from "@/assets/feat-chat.jpg";
 import featTemplate from "@/assets/feat-template.jpg";
+import heroImg from "@/assets/hero.jpg";
 import { ArrowRight, Check, FileText, Quote, Sparkles, Star } from "lucide-react";
 
 export const Route = createFileRoute("/reportflow")({
@@ -11,7 +12,7 @@ export const Route = createFileRoute("/reportflow")({
       {
         name: "description",
         content:
-          "Your AI report partner. Drop in your sources, get a fully-formatted academic report in minutes — powered by the best frontier AI models.",
+          "Drop in your sources, get a fully-formatted academic report in minutes. ReportFlow handles the structure, citations, and formatting automatically.",
       },
       { property: "og:title", content: "ReportFlow — Write Anything" },
       { property: "og:description", content: "Drop in your sources, get a fully-formatted report in minutes." },
@@ -37,9 +38,9 @@ function Landing() {
       <FeatureBlock
         reverse
         eyebrow="02 — Synthesis"
-        title="The best ideas from every model."
-        body="An agent queries multiple frontier models in parallel — comparing arguments, weighing evidence, and synthesizing the strongest content into one cohesive voice."
-        bullets={["4+ premium LLMs per draft", "Always cites its sources", "Tunable tone and reading level"]}
+        title="The strongest content from every source."
+        body="ReportFlow cross-references your sources in parallel — comparing arguments, weighing evidence, and synthesizing the strongest content into one cohesive voice."
+        bullets={["Multi-pass synthesis per draft", "Always cites its sources", "Tunable tone and reading level"]}
         image={featChat}
         bg="from-[#ffb199] via-[#ff8fa3] to-[#ff6b6b]"
       />
@@ -69,9 +70,9 @@ function Nav() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link to="/reportflow" className="flex items-center gap-2.5">
           <Logo />
-          <div className="flex flex-col leading-none">
-            <span className="text-[17px] font-medium tracking-tight">ReportFlow</span>
-            <Link to="/" className="text-[10px] text-muted-foreground hover:text-foreground transition tracking-wide">by Quantavyn</Link>
+          <div className="flex flex-col leading-none gap-0.5">
+            <span className="text-[17px] font-medium tracking-tight leading-none">ReportFlow</span>
+            <Link to="/" className="text-[10px] text-muted-foreground hover:text-foreground transition tracking-wide leading-none">by Quantavyn</Link>
           </div>
         </Link>
         <nav className="hidden items-center gap-9 text-sm text-foreground/75 md:flex">
@@ -110,7 +111,7 @@ function Hero() {
   return (
     <section className="relative overflow-hidden">
       <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[640px] bg-[radial-gradient(60%_50%_at_50%_0%,oklch(0.78_0.18_142/0.18),transparent_70%)]" />
-      <div className="mx-auto max-w-7xl px-6 pb-24 pt-24 text-center sm:pt-32">
+      <div className="mx-auto max-w-7xl px-6 pb-16 pt-24 text-center sm:pt-32">
         <div className="mx-auto mb-8 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3.5 py-1.5 text-xs text-foreground/70">
           <span className="relative flex h-1.5 w-1.5">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
@@ -124,8 +125,8 @@ function Hero() {
           in minutes, not hours.
         </h1>
         <p className="mx-auto mt-8 max-w-xl text-base text-muted-foreground sm:text-lg">
-          Your AI report partner. Drop in your sources, get a fully-formatted
-          academic report — powered by the best frontier AI models.
+          Drop in your sources, get a fully-formatted academic report — structured,
+          cited, and submission-ready in minutes.
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
           <a
@@ -144,104 +145,54 @@ function Hero() {
         </div>
         <p className="mt-5 text-xs text-muted-foreground">No credit card · 1 free report on signup</p>
 
-        <HeroPreview />
+        <HeroImage />
       </div>
     </section>
   );
 }
 
-function HeroPreview() {
+function HeroImage() {
   return (
-    <div className="relative mx-auto mt-20 max-w-5xl">
+    <div className="relative mx-auto mt-16 max-w-5xl">
       <div className="absolute -inset-8 -z-10 rounded-[44px] bg-gradient-to-br from-emerald-200/40 via-sky-200/40 to-violet-300/40 blur-3xl" />
-      <div className="grain-overlay relative overflow-hidden rounded-3xl border border-border bg-foreground shadow-card">
-        {/* window chrome */}
-        <div className="flex items-center justify-between border-b border-white/10 px-5 py-3">
-          <div className="flex gap-1.5">
-            <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
-            <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
-            <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
+      <div className="grain-overlay relative overflow-hidden rounded-3xl border border-border shadow-card">
+        <img
+          src={heroImg}
+          alt="ReportFlow — write anything in minutes"
+          width={1280}
+          height={720}
+          className="h-auto w-full object-cover"
+          loading="eager"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-foreground/30 via-transparent to-transparent" />
+        <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4">
+          <div className="rounded-2xl border border-white/15 bg-black/50 px-5 py-3.5 backdrop-blur-md">
+            <div className="text-[10px] uppercase tracking-widest text-white/50">Report ready</div>
+            <div className="mt-0.5 text-sm font-medium text-white">Final Thesis Draft · IEEE Format</div>
           </div>
-          <div className="hidden text-[11px] text-white/40 sm:block">reportflow.app · Final Thesis Draft</div>
-          <div className="w-12" />
-        </div>
-        <div className="grid grid-cols-1 gap-px bg-white/5 md:grid-cols-[220px_1fr_280px]">
-          <PreviewSources />
-          <PreviewDoc />
-          <PreviewAgent />
+          <div className="hidden sm:flex items-center gap-2 rounded-full border border-white/15 bg-black/50 px-4 py-2 backdrop-blur-md">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
+            </span>
+            <span className="text-xs text-white/80">Processing complete</span>
+          </div>
         </div>
       </div>
-    </div>
-  );
-}
 
-function PreviewSources() {
-  const items = ["Lecture_07.pdf", "Lab_results.xlsx", "Smith_2021.pdf", "Brief.docx", "Notes.md"];
-  return (
-    <div className="bg-[#0f1115] p-5 text-left">
-      <div className="mb-4 text-[10px] uppercase tracking-widest text-white/40">Sources · 5</div>
-      <ul className="space-y-1.5">
-        {items.map((i) => (
-          <li key={i} className="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-white/80 hover:bg-white/5">
-            <FileText className="h-3.5 w-3.5 text-white/40" />
-            <span className="truncate">{i}</span>
-          </li>
-        ))}
-      </ul>
-      <div className="mt-4 rounded-md border border-dashed border-white/15 p-3 text-center text-[11px] text-white/40">
-        + Add source
-      </div>
-    </div>
-  );
-}
-
-function PreviewDoc() {
-  return (
-    <div className="bg-[#0b0d11] p-6 text-left">
-      <div className="mx-auto max-w-md rounded-lg bg-white/[0.04] p-6 text-white/85">
-        <div className="text-[10px] uppercase tracking-widest text-white/40">Abstract</div>
-        <div className="mt-2 font-serif text-lg leading-snug">
-          On the role of catalytic surfaces in low-temperature ammonia synthesis
-        </div>
-        <div className="mt-4 space-y-1.5">
-          {[100, 92, 96, 70].map((w, i) => (
-            <div key={i} className="h-2 rounded-full bg-white/10" style={{ width: `${w}%` }} />
-          ))}
-        </div>
-        <div className="mt-5 text-[10px] uppercase tracking-widest text-white/40">1 · Introduction</div>
-        <div className="mt-2 space-y-1.5">
-          {[100, 98, 94, 88, 60].map((w, i) => (
-            <div key={i} className="h-2 rounded-full bg-white/10" style={{ width: `${w}%` }} />
-          ))}
+      {/* Floating stats */}
+      <div className="absolute -left-4 top-1/3 hidden xl:block">
+        <div className="rounded-2xl border border-border bg-background shadow-card px-4 py-3">
+          <div className="text-2xl font-medium tracking-tight">3.5h</div>
+          <div className="text-xs text-muted-foreground mt-0.5">saved per report</div>
         </div>
       </div>
-    </div>
-  );
-}
-
-function PreviewAgent() {
-  return (
-    <div className="bg-[#0f1115] p-5 text-left">
-      <div className="mb-4 text-[10px] uppercase tracking-widest text-white/40">Agent · synthesizing</div>
-      <div className="space-y-2">
-        <AgentLine model="GPT-4o" status="✓ Drafted intro" />
-        <AgentLine model="Gemini" status="✓ Cross-checked sources" />
-        <AgentLine model="GPT-5" status="⏵ Composing methodology" active />
-        <AgentLine model="Reviewer" status="… queued" muted />
+      <div className="absolute -right-4 top-1/4 hidden xl:block">
+        <div className="rounded-2xl border border-border bg-background shadow-card px-4 py-3">
+          <div className="text-2xl font-medium tracking-tight">99%</div>
+          <div className="text-xs text-muted-foreground mt-0.5">template accuracy</div>
+        </div>
       </div>
-      <div className="mt-5 rounded-lg bg-white/[0.04] p-3">
-        <div className="text-[10px] uppercase tracking-widest text-white/40">Template</div>
-        <div className="mt-1 text-xs text-white/80">IEEE · 12pt · Single column</div>
-      </div>
-    </div>
-  );
-}
-
-function AgentLine({ model, status, active, muted }: { model: string; status: string; active?: boolean; muted?: boolean }) {
-  return (
-    <div className={`flex items-center justify-between rounded-md px-2.5 py-2 text-xs ${active ? "bg-white/10" : "bg-white/[0.03]"} ${muted ? "opacity-50" : ""}`}>
-      <span className="font-medium text-white/85">{model}</span>
-      <span className="text-white/55">{status}</span>
     </div>
   );
 }
@@ -252,7 +203,7 @@ function LogosStrip() {
   const items = ["Stanford", "MIT", "Oxford", "ETH Zürich", "NUS", "Berkeley", "Imperial", "TU Delft"];
   const list = [...items, ...items];
   return (
-    <section className="border-y border-border bg-surface/60">
+    <section className="border-y border-border bg-surface/60 mt-16">
       <div className="mx-auto max-w-7xl px-6 py-8">
         <p className="text-center text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
           Built by researchers · Trusted by students at
@@ -272,21 +223,10 @@ function LogosStrip() {
 /* ───────────────────────── FEATURE BLOCKS ───────────────────────── */
 
 function FeatureBlock({
-  eyebrow,
-  title,
-  body,
-  bullets,
-  image,
-  bg,
-  reverse = false,
+  eyebrow, title, body, bullets, image, bg, reverse = false,
 }: {
-  eyebrow: string;
-  title: string;
-  body: string;
-  bullets: string[];
-  image: string;
-  bg: string;
-  reverse?: boolean;
+  eyebrow: string; title: string; body: string; bullets: string[];
+  image: string; bg: string; reverse?: boolean;
 }) {
   return (
     <section id="features" className="mx-auto max-w-7xl px-6 py-16 sm:py-24">
@@ -314,7 +254,7 @@ function FeatureBlock({
               width={1280}
               height={960}
               loading="lazy"
-              className="mx-auto h-auto w-full max-w-2xl rounded-2xl"
+              className="mx-auto h-auto w-full max-w-2xl rounded-2xl shadow-card"
             />
           </div>
         </div>
@@ -328,7 +268,7 @@ function FeatureBlock({
 function Stats() {
   const items = [
     { k: "3.5h", v: "Saved per report" },
-    { k: "4+", v: "Models synthesized" },
+    { k: "200+", v: "Sources per report" },
     { k: "99%", v: "Template accuracy" },
     { k: "10k+", v: "Students on waitlist" },
   ];
@@ -408,7 +348,7 @@ function Pricing() {
       name: "Free",
       price: "$0",
       desc: "Try your first report on us.",
-      feats: ["1 report total", "All LLMs included", "Standard templates"],
+      feats: ["1 report total", "Full synthesis included", "Standard templates"],
       cta: "Start free",
       highlight: false,
     },
@@ -489,8 +429,8 @@ function Pricing() {
 
 function FAQ() {
   const qs = [
-    { q: "Is this just ChatGPT with extra steps?", a: "No. ReportFlow orchestrates multiple frontier models, grounds every claim in your uploaded sources, and applies a strict template — three things a single chatbot can't do reliably." },
-    { q: "Will my professor know?", a: "ReportFlow is a writing assistant, not a ghostwriter. We help you structure, draft, and format faster — the ideas, edits, and final voice are yours. Always check your institution's policy." },
+    { q: "How is this different from a word processor?", a: "ReportFlow doesn't just format — it reads your sources, extracts key arguments, cross-references claims, and builds a structured draft. A word processor starts blank; ReportFlow starts with your research." },
+    { q: "Will my professor know?", a: "ReportFlow is a writing assistant, not a ghostwriter. We help you structure, draft, and format faster — the ideas, edits, and final voice are yours. Always check your institution's academic integrity policy." },
     { q: "What sources can I upload?", a: "PDFs, DOCX, slides, lecture audio, web links, Markdown, and plain text. Up to 200 sources per report." },
     { q: "Do I keep the rights to my work?", a: "Yes, 100%. We don't train on your content, and your sources are deleted on request." },
   ];
@@ -561,12 +501,6 @@ function CTA() {
 /* ───────────────────────── FOOTER ───────────────────────── */
 
 function Footer() {
-  const cols = [
-    { h: "Product", l: ["Overview", "Templates", "Integrations", "Changelog"] },
-    { h: "Company", l: ["About", "Careers", "Blog", "Press"] },
-    { h: "Resources", l: ["Help center", "Academic policy", "API docs", "Status"] },
-    { h: "Legal", l: ["Privacy", "Terms", "Security", "Contact"] },
-  ];
   return (
     <footer className="border-t border-border">
       <div className="mx-auto max-w-7xl px-6 py-16">
@@ -577,22 +511,44 @@ function Footer() {
               <span className="text-lg font-medium tracking-tight">ReportFlow</span>
             </div>
             <p className="mt-4 max-w-xs text-sm text-muted-foreground">
-              Your AI report partner. Built by researchers, for students.
+              Your report partner. Built by researchers, for students.
             </p>
-          </div>
-          {cols.map((c) => (
-            <div key={c.h}>
-              <div className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">{c.h}</div>
-              <ul className="mt-4 space-y-2.5 text-sm">
-                {c.l.map((i) => (
-                  <li key={i}><a href="#" className="text-foreground/75 hover:text-foreground transition">{i}</a></li>
-                ))}
-              </ul>
+            <div className="mt-4 text-xs text-muted-foreground">
+              <Link to="/" className="hover:text-foreground transition">A Quantavyn Product</Link>
             </div>
-          ))}
+          </div>
+          <div>
+            <div className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">Product</div>
+            <ul className="mt-4 space-y-2.5 text-sm">
+              <li><a href="#features" className="text-foreground/75 hover:text-foreground transition">Overview</a></li>
+              <li><a href="#pricing" className="text-foreground/75 hover:text-foreground transition">Pricing</a></li>
+              <li><a href="#faq" className="text-foreground/75 hover:text-foreground transition">FAQ</a></li>
+            </ul>
+          </div>
+          <div>
+            <div className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">Company</div>
+            <ul className="mt-4 space-y-2.5 text-sm">
+              <li><Link to="/about" className="text-foreground/75 hover:text-foreground transition">About Quantavyn</Link></li>
+              <li><Link to="/contact" className="text-foreground/75 hover:text-foreground transition">Contact</Link></li>
+            </ul>
+          </div>
+          <div>
+            <div className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">Resources</div>
+            <ul className="mt-4 space-y-2.5 text-sm">
+              <li><a href="#" className="text-foreground/75 hover:text-foreground transition">Help Center</a></li>
+              <li><a href="#" className="text-foreground/75 hover:text-foreground transition">Academic Policy</a></li>
+            </ul>
+          </div>
+          <div>
+            <div className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">Legal</div>
+            <ul className="mt-4 space-y-2.5 text-sm">
+              <li><Link to="/privacy" className="text-foreground/75 hover:text-foreground transition">Privacy Policy</Link></li>
+              <li><Link to="/terms" className="text-foreground/75 hover:text-foreground transition">Terms of Service</Link></li>
+            </ul>
+          </div>
         </div>
         <div className="mt-14 flex flex-col items-start justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center">
-          <div>© {new Date().getFullYear()} ReportFlow. All rights reserved.</div>
+          <div>© {new Date().getFullYear()} ReportFlow · Quantavyn. All rights reserved.</div>
           <div>Made with care for the deadline-stricken.</div>
         </div>
       </div>
