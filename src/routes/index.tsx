@@ -8,7 +8,7 @@ import { ArrowRight, Check, Zap, Layers, Target, Brain } from "lucide-react";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Quantavyn — Intelligent Documentation Software" },
+      { title: "Quantavyn | Intelligent Documentation Software" },
       {
         name: "description",
         content:
